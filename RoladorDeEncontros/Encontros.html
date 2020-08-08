@@ -45,7 +45,7 @@
     <div>
         <h3>Deserto</h3>
         <button onclick="Des01_05()">Níveis 01-05</button><br>
-        <button onclick="">Níveis 06-10</button><br>
+        <button onclick="Des06_10()">Níveis 06-10</button><br>
         <button onclick="">Níveis 11-15</button><br>
         <button onclick="">Níveis 16-20</button><br>
         <p id="desOut" class="output"></p>
@@ -108,13 +108,6 @@
     </div>
 
     <script>
-        let drv = {
-            dados: new Array(),
-            soma: 0,
-            nome: "Valor de retorno de uma rolagem de dados"
-        }
-    </script>
-    <script>
         function RollString(str) {
             let d_ = str.indexOf("d");
             let amount = str.slice(0, d_);
@@ -154,6 +147,12 @@
                     else if((str.lastIndexOf("ns") +"ns".length) == str.length){    /*Ex: homens*/
                         return (str.slice(0, (str.length - "ns".length)) + "m");
                     }
+                    else if((str.lastIndexOf("ares") +"ares".length) == str.length){    /*Ex: aranhas interplanares*/
+                        return (str.slice(0, (str.length - "es".length)));
+                    }
+                    else if((str.lastIndexOf("ores") +"ores".length) == str.length){    /*Ex: caçadores*/
+                        return (str.slice(0, (str.length - "es".length)));
+                    }
                     else /*if((str.lastIndexOf("s") +"s".length) == str.length)*/{
                         return (str.slice(0, (str.length - "s".length)));
                     }
@@ -164,8 +163,23 @@
             }
         }
     </script>
+    <script>
+        var dado = Math.floor(Math.random()*99);
+        const tab=[];
+        for(var h = 0; h < 100; h++){
+            tab[h] = "-";
+        }
+        let functionEvalName;
+        let rs;
+        let drv = {};
+        let str;
+        let drv2;
+
+        rs = document.scripts[0].outerText;
+        functionEvalName = "drv = " + rs.slice(rs.indexOf("function ")+"function ".length, rs.indexOf(")")+1);
+    </script>
 
     <script src="ScriptEncontros/Deserto/Des01_05.js"></script>
-    <script src="ScriptEncontros/Artico.js"></script>
+    <script src="ScriptEncontros/Deserto/Des06_10.js"></script>
 </body>
 </html>

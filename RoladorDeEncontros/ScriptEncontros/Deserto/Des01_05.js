@@ -1,22 +1,9 @@
-
 function Des01_05() {
-    var dado = Math.floor(Math.random()*99);
-    const tab=[];
-    for(var h = 0; h < 100; h++){
-        tab[h] = "-";
-    }
-    let functionEvalName;
-    let rs;
-    let drv = {};
-    let str;
-    let drv2;
 
-
-    rs = document.scripts[1].outerText;
-    functionEvalName = "drv = " + rs.slice(rs.indexOf("function ")+"function ".length, rs.indexOf(")")+1);
+    eval(document.scripts[1].outerText);    //variáveis básicas
 
     str = "3d8";
-    eval(rs+" "+functionEvalName+";");
+    eval(rs+"; "+functionEvalName/*+";"*/);
     tab.splice(0, 1, drv.soma + " "+grmtc.plu(drv.soma, 'escorpiões'));
 
     str = "2d4";
