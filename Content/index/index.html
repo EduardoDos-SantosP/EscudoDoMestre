@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Tela Inicial</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body id="body">
+    <h1>Escudo Do Mestre</h1>
+<ul style="list-style-type: none">
+    <li><a href="../RoladorDeEncontros/Encontros.html"><b>Encontros</b></a></li>
+    <li><a><b>Capacidade De Recipientes</b></a></li>
+</ul>
+</body>
+<script>
+    let bg = {
+        theme(t){
+            const summary = ['default'];
+            let id;
+            if(typeof t == 'string'){
+                for(let i = 0; i < summary.length; i++){
+                    if(t.toLowerCase() === summary[i]){
+                        id = i;
+                    }
+                }
+            }
+            else if(typeof t == 'number'){
+                id = t;
+            }
+            const themes = [
+              'img/bg1.jpg' //Default
+            ];
+            return themes[id];
+        },
+        config: 'background-attachment: fixed; background-repeat: no-repeat; background-size: auto 100%; background-position: center'
+    };
+
+    document.body.background = bg.theme('default');
+    document.body.style = bg.config;
+</script>
+</html>
