@@ -9,33 +9,47 @@
     <h1>Escudo Do Mestre</h1>
 <ul style="list-style-type: none">
     <li><a href="../RoladorDeEncontros/Encontros.html"><b>Encontros</b></a></li>
+    <li><a href="../Bugigangas/bugigangas.html"><b>Bugigangas (Trecos Aleatórios)</b></a></li>
     <li><a><b>Capacidade De Recipientes</b></a></li>
 </ul>
 </body>
 <script>
-    let bg = {
-        theme(t){
-            const summary = ['default'];
+    let body = {
+        bg(method, argument){
+            const summary = ['default', 'dark'];
             let id;
-            if(typeof t == 'string'){
+            if(typeof argument == 'string'){
                 for(let i = 0; i < summary.length; i++){
-                    if(t.toLowerCase() === summary[i]){
+                    if(argument.toLowerCase() === summary[i]){
                         id = i;
                     }
                 }
             }
-            else if(typeof t == 'number'){
-                id = t;
+            else if(typeof argument == 'number'){
+                id = argument;
             }
             const themes = [
-              'img/bg1.jpg' //Default
+                'img/bg_default.jpg',   //Default
+                'img/bg_dark.jpg'
             ];
-            return themes[id];
-        },
-        config: 'background-attachment: fixed; background-repeat: no-repeat; background-size: auto 100%; background-position: center'
+            const config = 'background-attachment: fixed; background-repeat: no-repeat; background-size: auto 100%; background-position: center; background-color: ';
+            const formats = [
+                config+'white',
+                config+'black'
+            ];
+
+            if(method == 0 || method.toLowerCase() == 'theme'){
+                return themes[id];
+            }
+            else if(method == 1 || method.toLowerCase() == 'format'){
+                return formats[id];
+            }
+        }
     };
 
-    document.body.background = bg.theme('default');
-    document.body.style = bg.config;
+    let bg = 'default'  //current
+    document.body.background = body.bg('theme', bg);
+    document.body.style = body.bg('format', bg);
+
 </script>
 </html>
